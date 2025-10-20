@@ -53,9 +53,14 @@ public class Application {
         // 숫자 하나씩 배열에 담는다
         List<Integer> numList = new ArrayList<>();
 
-        for (String i : strArr) {
+        for (String part: strArr) {
             try {
-                int num = Integer.parseInt(i.trim());
+
+                if (part.trim().isEmpty()) {
+                    continue;
+                }
+
+                int num = Integer.parseInt(part.trim());
 
                 if (num < 0) {
                     throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
