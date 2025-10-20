@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
+    public record ParsedResult(String delimiter, String data) {}
+
     public static void main(String[] args) {
 
         // 1. 문자열 입력
