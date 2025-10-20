@@ -16,7 +16,10 @@ public class Application {
         ParsedResult result = parseInput(originalStr);
 
         // 3. 숫자 추출
-        extractNum(result.data(), result.delimiter());
+        List<Integer> numList = extractNum(result.data(), result.delimiter());
+
+        // 4. 숫자의 합 반환
+        sumNum(numList);
 
     }
 
@@ -43,7 +46,7 @@ public class Application {
      * 구분자를 기준으로 숫자를 추출합니다.
      * @param str 입력받은 문자열
      */
-    public static void extractNum(String str, String delimiter) {
+    public static List<Integer> extractNum(String str, String delimiter) {
 
         // 구분자(쉼표, 콜론) 기준으로 나눈다
         String[] strArr = str.split(delimiter);
@@ -55,14 +58,16 @@ public class Application {
             int num = Integer.parseInt(i.trim());
             numList.add(num);
         }
+
+        return numList;
     }
 
     record ParsedResult(String delimiter, String data) {}
 
     /**
      * 원본 문자열에서 문자열과 구분자를 추출합니다.
-     * @param originalStr
-     * @return
+     * @param originalStr 입력 받은 문자열
+     * @return 숫자로만 구성된 리스트와 구분자
      */
     public static ParsedResult parseInput(String originalStr) {
 
@@ -78,5 +83,20 @@ public class Application {
         }
 
         return new ParsedResult(delimiter, data);
+    }
+
+    /**
+     * 추출한 숫자들의 합을 출력합니다.
+     * @param numList 순수 숫자로만 구성된 배열
+     */
+    public static void sumNum(List<Integer> numList) {
+
+        int sum = 0;
+
+        for (Integer num : numList) {
+            sum += num;
+        }
+
+        System.out.println("결과 : " + sum);
     }
 }
