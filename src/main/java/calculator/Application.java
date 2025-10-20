@@ -37,6 +37,8 @@ public class Application {
     /**
      * 구분자를 기준으로 숫자를 추출합니다.
      * @param str 입력받은 문자열
+     * @param delimiter 기본 혹은 커스텀 구분자
+     * @return 숫자로만 구성된 배열
      */
     public static List<Integer> extractNum(String str, String delimiter) {
 
