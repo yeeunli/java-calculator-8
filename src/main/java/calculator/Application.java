@@ -48,6 +48,11 @@ public class Application {
      */
     public static List<Integer> extractNum(String str, String delimiter) {
 
+        // 빈 문자열일 경우 빈 리스트 반환
+        if (str == null || str.isEmpty()) {
+            return new ArrayList<>();
+        }
+
         // 구분자(쉼표, 콜론) 기준으로 나눈다
         String[] strArr = str.split(delimiter);
 
@@ -55,8 +60,18 @@ public class Application {
         List<Integer> numList = new ArrayList<>();
 
         for (String i : strArr) {
-            int num = Integer.parseInt(i.trim());
-            numList.add(num);
+            try {
+                int num = Integer.parseInt(i.trim());
+
+                if (num < 0) {
+                    throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+                }
+
+                numList.add(num);
+            }  catch (NumberFormatException e) {
+                throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다.");
+            }
+
         }
 
         return numList;
