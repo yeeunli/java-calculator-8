@@ -76,8 +76,6 @@ public class Application {
         return numList;
     }
 
-    record ParsedResult(String delimiter, String data) {}
-
     /**
      * 원본 문자열에서 문자열과 구분자를 추출합니다.
      * @param originalStr 입력 받은 문자열
